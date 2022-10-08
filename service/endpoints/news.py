@@ -36,8 +36,8 @@ async def get_news(
     user = await get_user(login, session)
     news = await get_news_for_user(user,session)
     return [NewsOut(
-        url=el.url,
-        summary=el.summary,
+        url=el.source,
+        summary=el.title,
         tags=[],
         created_at=el.created_at,
         id = el.id
