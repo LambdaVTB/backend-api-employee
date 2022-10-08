@@ -5,6 +5,7 @@ from fastapi.responses import JSONResponse
 
 from service.exceptions.common import CommonException, InternalServerError
 from service.utils.logger import Log
+from service.utils.graph import Graph
 
 
 from service.endpoints.auth import auth_router
@@ -17,10 +18,12 @@ app = FastAPI(title="News feed")
 @app.on_event("startup")
 async def startup() -> None:
     await Log.initialise_logger()
+    await Graph.connect_db()
 
 
 @app.on_event("shutdown")
 async def shutdown() -> None:
+    await Graph.disconnect_db()
     await Log.shutdown_logger()
 
 
