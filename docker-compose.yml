@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  api:
+    container_name: "api"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/code
+    ports:
+      - "${FASTAPI_PORT}:${FASTAPI_PORT}"
+    env_file:
+      - .env
+    restart: always
