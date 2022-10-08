@@ -6,7 +6,10 @@ from fastapi.responses import JSONResponse
 from service.exceptions.common import CommonException, InternalServerError
 from service.utils.logger import Log
 
+
 from service.endpoints.auth import auth_router
+from service.endpoints.news import news_router
+
 
 app = FastAPI(title="News feed")
 
@@ -54,4 +57,4 @@ async def log_requst(request: Request, call_next):
     return response
 
 app.include_router(auth_router)
-
+app.include_router(news_router)
