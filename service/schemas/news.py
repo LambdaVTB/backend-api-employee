@@ -6,4 +6,5 @@ class NewsOut(BaseModel):
     summary: str = Field(None, description='Краткая выжимка')
     created_at: datetime  = Field(None, description='Время публикации новости')
     tags: list[str] = Field(None, description='Список тегов')
+    id: str = Field(None, description='Идентификатор новости')
 

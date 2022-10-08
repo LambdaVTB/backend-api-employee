@@ -10,7 +10,8 @@ from service.utils.auth import get_current_user
 from service.exceptions.common import ForbiddenException 
 from service.schemas.news import NewsOut
 from migrations.connection.session import get_session
-from service.services.auth import add_new_user, get_user 
+from service.services.auth import add_new_user, get_user
+from service.services.news import get_news_for_user
 
 news_router = APIRouter(tags=["Функции для новостей"])
 
@@ -21,12 +22,13 @@ async def get_news(
     session: AsyncSession = Depends(get_session)
 ) -> list[NewsOut]:
     user = await get_user(login, session)
+    news = await get_news_for_user(user,session)
     return [NewsOut(
-        url="http:\\google.com",
-        summary="Краткая выжимка",
-        tags=["Генеральный директор",],
-        created_at = datetime.now(timezone("UTC"))
-    )]
+        url=el.url,
+        summary=el.summary,
+        tags=[],
+        created_at=el.created_at
+    ) for el in news]
 
 @news_router.get("/news/personalized", response_model=list[NewsOut])
 async def get_personalized_news(
