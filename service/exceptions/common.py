@@ -1,8 +1,9 @@
 from fastapi import status
+from typing import Union
 
 
 class CommonException(Exception):
-    def __init__(self, code: int, message: str, error: Exception | None) -> None:
+    def __init__(self, code: int, message: str, error: Union[Exception,None]) -> None:
         super().__init__()
         self.error = error
         self.code = code

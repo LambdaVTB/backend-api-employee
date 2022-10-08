@@ -13,7 +13,7 @@ class PostgresSettings(BaseSettings):
     @property
     def db_uri(self) -> str:
         return PostgresDsn.build(
-            scheme="postgres",
+            scheme="postgresql+asyncpg",
             user=self.POSTGRES_USERNAME,
             password=self.POSTGRES_PASSWORD,
             host=self.POSTGRES_HOST,

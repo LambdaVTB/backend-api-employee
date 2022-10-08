@@ -1,6 +1,5 @@
-from app.config.fastapi import FastapiSettings
-from app.config.mongo import MongoSettings
-from app.config.postgres import PostgresSettings
+from service.configs.fastapi import FastapiSettings
+from service.configs.postgres import PostgresSettings
 
 
 def get_postgres_settings() -> PostgresSettings:

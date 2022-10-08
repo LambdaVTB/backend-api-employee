@@ -3,8 +3,6 @@ from uuid import UUID
 from fastapi import Depends, File, UploadFile
 from pydantic import BaseModel, Field
 
-from app.models.base.base_user import Roles
-from app.utils.auth import get_current_user
 
 
 class SuccessfullResponse(BaseModel):

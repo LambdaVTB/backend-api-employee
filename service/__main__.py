@@ -3,8 +3,8 @@ from time import ctime, perf_counter
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from services.exceptions.common import CommonException, InternalServerError
-from services.utils.logger import Log
+from service.exceptions.common import CommonException, InternalServerError
+from service.utils.logger import Log
 
 from service.endpoints.auth import auth_router
 
@@ -14,12 +14,10 @@ app = FastAPI(title="News feed")
 @app.on_event("startup")
 async def startup() -> None:
     await Log.initialise_logger()
-    await Postgres.connect_db()
 
 
 @app.on_event("shutdown")
 async def shutdown() -> None:
-    await Postgres.disconnect_db()
     await Log.shutdown_logger()
 
 
