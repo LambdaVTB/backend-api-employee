@@ -12,3 +12,8 @@ class SuccessfullResponse(BaseModel):
 class TokenOut(BaseModel):
     access_token: str = Field(..., description="Access token")
     token_type: str = Field(..., description="Token type")
+
+class JobsOut(BaseModel):
+    id: UUID = Field(..., description="Идентификатор работы")
+    name: str = Field(..., description="Название работы")
+
