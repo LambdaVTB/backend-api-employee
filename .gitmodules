@@ -1,6 +1,3 @@
-[submodule "service/database"]
-	path = service/database
-	url = git@github.com:LambdaVTB/backend-migrations.git
-[submodule "service/service/migrations"]
-	path = service/service/migrations
+[submodule "service/migrations"]
+	path = service/migrations
 	url = git@github.com:LambdaVTB/backend-migrations.git
