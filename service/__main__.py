@@ -10,6 +10,7 @@ from service.utils.graph import Graph
 
 from service.endpoints.auth import auth_router
 from service.endpoints.news import news_router
+from service.endpoints.trends import trends_router
 
 
 app = FastAPI(title="News feed")
@@ -61,3 +62,4 @@ async def log_requst(request: Request, call_next):
 
 app.include_router(auth_router)
 app.include_router(news_router)
+app.include_router(trends_router)
